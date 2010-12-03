@@ -17,10 +17,10 @@ include $(TOP_DIR)/config/config.make
 OFLAGS :=-static
 
 #LIBCGI := ../cgi/libcgi
-LIBS2E := libs2e
-CFLAGS += -I$(LIBCGI) -I$(LIBS2E)
-OFLAGS += -L$(LIBS2E) -ls2e
-LIBS += $(LIBS2E)/libs2e.a
+#LIBS2E := libs2e
+CFLAGS += -I$(LIBCGI) #-I$(LIBS2E)
+#OFLAGS += -L$(LIBS2E) -ls2e
+#LIBS += $(LIBS2E)/libs2e.a
 
 ifneq ($(CONFIG_IPV6),)
 CFLAGS	+=-DINET6
@@ -30,8 +30,11 @@ INS_DIR := $(TOP_DIR)/romfs
 
 ##
 
-HDRS = tty.h tty_comm.h ../my_libc/io_common.h ../my_libc/pm_common.h
-OBJS = tty_comm.o tty.o ../my_libc/io_common.o ../my_libc/pm_common.o
+#HDRS = tty.h tty_comm.h ../my_libc/io_common.h ../my_libc/pm_common.h
+#OBJS = tty_comm.o tty.o ../my_libc/io_common.o ../my_libc/pm_common.o
+
+HDRS = tty.h tty_comm.h ../my_libc/s2e_common.h ../my_libc/io_common.h ../my_libc/pm_common.h
+OBJS = tty_comm.o tty.o ../my_libc/s2e_common.o ../my_libc/io_common.o ../my_libc/pm_common.o
 EXES = tty_comm
 
 ##
